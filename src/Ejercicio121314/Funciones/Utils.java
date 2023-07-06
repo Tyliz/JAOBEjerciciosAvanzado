@@ -37,6 +37,7 @@ public class Utils {
         for (int primo: primos) {
             if (numero % primo == 0) return false;
         }
+
         return true;
     }
 }
