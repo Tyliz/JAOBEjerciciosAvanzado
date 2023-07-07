@@ -5,10 +5,11 @@ import java.util.ArrayList;
 import Ejercicio222324.SOLID.Excepciones.Coche.CocheException;
 import Ejercicio222324.SOLID.Models.Coche;
 import Ejercicio222324.SOLID.Models.Coches;
+import Ejercicio222324.SOLID.Models.CochesBusqueda;
 
 public class Main {
     public static void main(String[] args) {
-        Coches coches = new Coches();
+        CochesBusqueda coches = new CochesBusqueda();
 
         Coche coche1 = new Coche();
         coche1.setMarca("BMW");
@@ -18,10 +19,14 @@ public class Main {
 
         crearCoche(coches, coche1);
 
-        borrarCoche(coches, "1e1ce8e8-2c43-42bf-bcd3-77db77764b28");
-        borrarCoche(coches, "ad9207fb-a68e-47eb-8a96-2bf48590fd44");
+        borrarCoche(coches, "864d34d7-15ae-416e-8d1c-90e321b4566d");
+        borrarCoche(coches, "843ed84c-9310-4972-aba3-9b5079e96a9f");
 
-        listarCoches(coches);
+        mostrarCoches(coches.listar());
+
+        System.out.println("Busqueda de Toyota");
+
+        mostrarCoches(coches.listar("Toyota"));
     }
 
     private static void crearCoche(Coches coches, Coche coche) {
@@ -40,12 +45,10 @@ public class Main {
         }
     }
 
-    private static void listarCoches(Coches coches) {
-        ArrayList<Coche> aCoches = coches.listar();
-
+    private static void mostrarCoches(ArrayList<Coche> coches) {
         System.out.println("\r\n---------------Coches---------------");
 
-        for (Coche coche : aCoches) {
+        for (Coche coche : coches) {
             System.out.println("------------------------------------");
 
             System.out.println(

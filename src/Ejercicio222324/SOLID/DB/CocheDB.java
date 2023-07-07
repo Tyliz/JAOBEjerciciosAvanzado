@@ -14,7 +14,11 @@ import Ejercicio222324.SOLID.Models.Coche;
 
 
 public class CocheDB {
-    private String ficheroCoches = "coches.txt";
+    protected String ficheroCoches;
+
+    public CocheDB() {
+        ficheroCoches = "coches.txt";
+    }
 
     public ArrayList<Coche> listar() {
         ArrayList<Coche> aCoches = new ArrayList<>();

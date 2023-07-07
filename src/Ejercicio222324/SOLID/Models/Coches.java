@@ -2,16 +2,16 @@ package Ejercicio222324.SOLID.Models;
 
 import java.util.ArrayList;
 
-import Ejercicio222324.SOLID.DB.CocheDB;
+import Ejercicio222324.SOLID.DB.CocheDBBusqueda;
 import Ejercicio222324.SOLID.Excepciones.Coche.CocheException;
 import Ejercicio222324.SOLID.Excepciones.Coche.CocheNoExisteException;
 
 public class Coches {
-    private CocheDB cocheDB;
+    protected CocheDBBusqueda cocheDB;
 
 
     public Coches() {
-        this.cocheDB = new CocheDB();
+        this.cocheDB = new CocheDBBusqueda();
     }
 
 
