@@ -27,9 +27,9 @@ public class Main {
 
         mostrarCoches(coches.listar());
 
-        // System.out.println("Busqueda de Toyota");
+        System.out.println("Busqueda de Toyota");
 
-        // mostrarCoches(coches.listar("Toyota"));
+        mostrarCoches(coches.listar("Toyota"));
     }
 
     private static void crearCoche(CochesBusqueda<CocheElectrico> coches, CocheElectrico coche) {
