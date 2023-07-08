@@ -1,11 +1,11 @@
 package Ejercicio222324.SOLID.Models;
 
 public class Coche {
-    private String idCoche;
-    private String marca;
-    private String modelo;
-    private boolean traccionDelantera;
-    private boolean traccionTrasera;
+    protected String idCoche;
+    protected String marca;
+    protected String modelo;
+    protected boolean traccionDelantera;
+    protected boolean traccionTrasera;
 
 
     public Coche() {
@@ -59,4 +59,9 @@ public class Coche {
                 ? "Tracción trasera"
                 : "Tracción delantera";
     }
+
+    public void setCapacidadBateria(double capacidadBateria) {}
+    public void setCapacidadCombustible(double capacidadCombustible) {}
+    public double getCapacidadBateria() { return 0; }
+    public double getCapacidadCombustible() { return 0; }
 }

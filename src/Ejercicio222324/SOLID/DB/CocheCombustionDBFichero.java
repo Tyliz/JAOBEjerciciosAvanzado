@@ -1,6 +1,5 @@
 package Ejercicio222324.SOLID.DB;
 
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
@@ -10,18 +9,17 @@ import java.util.Scanner;
 import java.util.UUID;
 
 import Ejercicio222324.SOLID.Excepciones.Coche.CocheException;
-import Ejercicio222324.SOLID.Models.Coche;
+import Ejercicio222324.SOLID.Models.CocheCombustion;
 
-
-public class CocheDB {
+public class CocheCombustionDBFichero {
     protected String ficheroCoches;
 
-    public CocheDB() {
-        ficheroCoches = "coches.txt";
+    public CocheCombustionDBFichero() {
+        ficheroCoches = "cochesCombustion.txt";
     }
 
-    public ArrayList<Coche> listar() {
-        ArrayList<Coche> aCoches = new ArrayList<>();
+    public ArrayList<CocheCombustion> listar() {
+        ArrayList<CocheCombustion> aCoches = new ArrayList<>();
 
         try {
             Scanner scanner = new Scanner(new File(ficheroCoches));
@@ -30,11 +28,12 @@ public class CocheDB {
                 String cocheString = scanner.next();
                 String[] cocheValores = cocheString.split(",");
 
-                Coche coche = new Coche(cocheValores[0]);
+                CocheCombustion coche = new CocheCombustion(cocheValores[0]);
                 coche.setMarca(cocheValores[1]);
                 coche.setModelo(cocheValores[2]);
                 coche.setTraccionDelantera(Boolean.parseBoolean(cocheValores[3]));
                 coche.setTraccionTrasera(Boolean.parseBoolean(cocheValores[4]));
+                coche.setCapacidadCombustible(Double.parseDouble(cocheValores[5]));
 
                 aCoches.add(coche);
             }
@@ -43,7 +42,7 @@ public class CocheDB {
         return aCoches;
     }
 
-    public Coche obtener(String idCoche) throws CocheException {
+    public CocheCombustion obtener(String idCoche) throws CocheException {
         try {
             Scanner scanner = new Scanner(new File(ficheroCoches));
 
@@ -51,11 +50,12 @@ public class CocheDB {
                 String cocheString = scanner.next();
                 String[] cocheValores = cocheString.split(",");
                 if (cocheValores[0].equals(idCoche)) {
-                    Coche coche = new Coche(cocheValores[0]);
+                    CocheCombustion coche = new CocheCombustion(cocheValores[0]);
                     coche.setMarca(cocheValores[1]);
                     coche.setModelo(cocheValores[2]);
                     coche.setTraccionDelantera(Boolean.parseBoolean(cocheValores[3]));
                     coche.setTraccionTrasera(Boolean.parseBoolean(cocheValores[4]));
+                    coche.setCapacidadCombustible(Double.parseDouble(cocheValores[5]));
 
                     return coche;
                 }
@@ -67,7 +67,7 @@ public class CocheDB {
         return null;
     }
 
-    public void crear(Coche coche) throws CocheException {
+    public void crear(CocheCombustion coche) throws CocheException {
         try {
             String idCoche = UUID.randomUUID().toString();
             FileOutputStream fileOutputStream = new FileOutputStream(ficheroCoches, true);
@@ -83,8 +83,8 @@ public class CocheDB {
 
     }
 
-    public void borrar(Coche coche) throws CocheException {
-        List<Coche> aCochesRestantes = listar()
+    public void borrar(CocheCombustion coche) throws CocheException {
+        List<CocheCombustion> aCochesRestantes = listar()
             .stream()
             .filter(x -> !x.getIdCoche().equals(coche.getIdCoche()))
             .toList();
@@ -92,7 +92,7 @@ public class CocheDB {
         try {
             PrintStream printStream = new PrintStream(ficheroCoches);
 
-            for (Coche cocheRestante : aCochesRestantes) {
+            for (CocheCombustion cocheRestante : aCochesRestantes) {
                 printStream.println(separarCochePorComas(cocheRestante));
             }
 
@@ -105,7 +105,12 @@ public class CocheDB {
     }
 
 
-    private String separarCochePorComas(Coche coche) {
-        return coche.getIdCoche() + "," + coche.getMarca() + "," + coche.getModelo() + "," + coche.tieneTraccionDelantera() + "," + coche.tieneTraccionTrasera();
+    private String separarCochePorComas(CocheCombustion coche) {
+        return coche.getIdCoche() + "," +
+            coche.getMarca() + "," +
+            coche.getModelo() + "," +
+            coche.tieneTraccionDelantera() + "," +
+            coche.tieneTraccionTrasera() + "," +
+            coche.getCapacidadCombustible();
     }
 }

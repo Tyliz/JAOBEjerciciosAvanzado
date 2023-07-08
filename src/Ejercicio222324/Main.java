@@ -4,18 +4,21 @@ import java.util.ArrayList;
 
 import Ejercicio222324.SOLID.Excepciones.Coche.CocheException;
 import Ejercicio222324.SOLID.Models.Coche;
-import Ejercicio222324.SOLID.Models.Coches;
+import Ejercicio222324.SOLID.Models.CocheElectrico;
+import Ejercicio222324.SOLID.Models.CocheHibrido;
 import Ejercicio222324.SOLID.Models.CochesBusqueda;
 
 public class Main {
     public static void main(String[] args) {
-        CochesBusqueda coches = new CochesBusqueda();
+        CochesBusqueda<CocheElectrico> coches = new CochesBusqueda<CocheElectrico>(CocheElectrico.class);
 
-        Coche coche1 = new Coche();
-        coche1.setMarca("BMW");
+        CocheElectrico coche1 = new CocheElectrico();
+        coche1.setMarca("Toyota");
         coche1.setModelo("2016");
-        coche1.setTraccionDelantera(false);
-        coche1.setTraccionTrasera(false);
+        coche1.setTraccionDelantera(true);
+        coche1.setTraccionTrasera(true);
+        coche1.setCapacidadBateria(1800);
+        coche1.setCapacidadCombustible(1500);
 
         crearCoche(coches, coche1);
 
@@ -24,12 +27,12 @@ public class Main {
 
         mostrarCoches(coches.listar());
 
-        System.out.println("Busqueda de Toyota");
+        // System.out.println("Busqueda de Toyota");
 
-        mostrarCoches(coches.listar("Toyota"));
+        // mostrarCoches(coches.listar("Toyota"));
     }
 
-    private static void crearCoche(Coches coches, Coche coche) {
+    private static void crearCoche(CochesBusqueda<CocheElectrico> coches, CocheElectrico coche) {
         try {
             coches.crear(coche);
         } catch (CocheException e) {
@@ -37,7 +40,7 @@ public class Main {
         }
     }
 
-    private static void borrarCoche(Coches coches, String idCoche) {
+    private static void borrarCoche(CochesBusqueda<CocheElectrico> coches, String idCoche) {
         try {
             coches.borrar(idCoche);
         } catch (CocheException e) {
@@ -45,7 +48,7 @@ public class Main {
         }
     }
 
-    private static void mostrarCoches(ArrayList<Coche> coches) {
+    private static void mostrarCoches(ArrayList<CocheElectrico> coches) {
         System.out.println("\r\n---------------Coches---------------");
 
         for (Coche coche : coches) {
@@ -54,8 +57,9 @@ public class Main {
             System.out.println(
                 coche.getMarca() + "|" +
                 coche.getModelo() + "|" +
-                coche.tieneTraccionDelantera() + "|" +
-                coche.tieneTraccionTrasera()
+                coche.obtenerTraccion() + "|" +
+                coche.getCapacidadBateria() + " A|" +
+                coche.getCapacidadCombustible() + " L"
             );
         }
     }

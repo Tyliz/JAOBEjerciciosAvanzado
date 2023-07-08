@@ -3,3 +3,7 @@
 bbe4939b-c4f5-41a3-bcda-1615b51eef07,Toyota,2017,false,true
 d287c490-fa77-4bb5-b94e-932b17166422,BMW,2016,false,true
 4b0f8db0-82fd-4523-9fbc-a1b8de2c07f8,BMW,2016,true,false
+2cb125c1-b529-4cc0-a71a-88835b67592c,BMW,2016,true,false
+6c8f5b24-566a-4ad7-ab71-0c091c73de6e,BMW,2016,true,false
+948a2e91-bd7b-45f2-98cb-8cc04a6b0117,BMW,2016,true,false
+da3e6cbc-49a5-4ca8-b10f-b8391ab04980,BMW,2016,true,false
