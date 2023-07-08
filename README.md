@@ -1,4 +1,4 @@
-# Version 0.0.5
+# Version 1.0.0
 
 Ejercicios 6, 7 y 8
 - Ejercicio de Singleton completado
@@ -17,3 +17,7 @@ Ejercicios 19 20 y 21
 
 Ejercicios 22 23 y 24
 - Implementacion de SOLid completado
+
+Ejercicios 25 26 y 27
+- Implementacion de solID completado, SOLID completado en el proyecto de coches
+
