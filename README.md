@@ -14,3 +14,6 @@ Ejercicios 15 16 17 y 18
 
 Ejercicios 19 20 y 21
 - Implementacion de argumentos y arquitectura limpia
+
+Ejercicios 22 23 y 24
+- Implementacion de SOLid completado
